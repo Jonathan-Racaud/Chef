@@ -1,0 +1,7 @@
+FileVersion = 1
+Dependencies = {corlib = "*", corlib = "*", Beef-Net = "*"}
+
+[Project]
+Name = "Chef"
+TargetType = "BeefLib"
+StartupObject = "Chef.Program"
