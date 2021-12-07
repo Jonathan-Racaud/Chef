@@ -57,7 +57,7 @@ namespace Chef.Routing
 				{
 					let paramName = RegisterParamName(i, parameterCount, ..scope String());
 
-					_compiledRegex.Replace(scope $"{{{paramName}}}", @"\w+");
+					_compiledRegex.Replace(scope $"{{{paramName}}}", @"[\w-_]+");
 
 					i += 6;
 					parameterCount++;
