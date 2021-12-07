@@ -49,6 +49,6 @@ namespace Chef.Logging
 
 	static
 	{
-		public static ConsoleLogger ConsoleLogger = new ConsoleLogger();
+		public static ConsoleLogger ConsoleLogger = new ConsoleLogger() ~ delete _;
 	}
 }

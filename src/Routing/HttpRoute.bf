@@ -6,7 +6,7 @@ using TinyRegex;
 
 namespace Chef.Routing
 {
-	public class Route
+	public class HttpRoute
 	{
 		public String RegisteredUrl { get; set => RegisteredUrl.Set(value); } = new .() ~ delete _;
 		public String Url { get; set => Url.Set(value); } = new .() ~ delete _;
@@ -15,7 +15,7 @@ namespace Chef.Routing
 		// The keys are destroyed when _parametersNames is destroyed
 		public Dictionary<String, String> Parameters { get; private set; } = new .() ~ DeleteDictionaryAndValues!(_);
 
-		private List<(int urlPosition, String name)> _parametersNames { get; private set; } = new .();
+		private List<(int urlPosition, String name)> _parametersNames { get; private set; } = new .() ~ delete _;
 		private String _compiledRegex = new .() ~ delete _;
 
 		public this(StringView url)

@@ -7,9 +7,9 @@ namespace Chef.Server
 {
 	public class HttpServer: TcpServer
 	{
-		public IRouter Router { get; private set; } = new Router() ~ delete _;
+		public IHttpRouter Router { get; private set; } = new HttpRouter() ~ delete _;
 
-		public void AddRouter(IRouter router)
+		public void UsingRouter(IHttpRouter router)
 		{
 			delete Router;
 
