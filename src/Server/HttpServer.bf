@@ -1,12 +1,20 @@
 using System;
 using System.Net;
-using Chef.Core;
+using Chef.Core.Http;
+using Chef.Routing;
 
 namespace Chef.Server
 {
 	public class HttpServer: TcpServer
 	{
-		public Router Router { get; private set; } = new .() ~ delete _;
+		public IRouter Router { get; private set; } = new Router() ~ delete _;
+
+		public void AddRouter(IRouter router)
+		{
+			delete Router;
+
+			Router = router;
+		}
 
 		protected override void HandleRequest(Socket client, void* data, int dataSize, String response)
 		{

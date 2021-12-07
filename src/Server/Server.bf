@@ -5,36 +5,23 @@ using System.Net;
 
 namespace Chef.Server
 {
-	public interface IServer
-	{
-		public String Host { get; set; }
-		public int Port { get; set; }
-	}
-
 	public abstract class Server
 	{
-		private String _host = new .() ~ delete _;
-		public String Host
-		{
-			get => _host;
-			set => _host.Set(value);
-		}
-
+		public String Host { get; set => Host.Set(value); } = new .() ~ delete _;
 		public int Port { get; set; }
 
 		protected bool IsRunning = false;
 		protected Dictionary<LogLevel, List<ILogger>> Loggers = new .() ~ DeleteDictionaryAndValues!(_);
 
-		public virtual void AddLogger(ILogger logger, LogLevel level = .Info)
+		public void AddLogger(ILogger logger, LogLevel level = .Info)
 		{
 			if (level == .Any)
 			{
-				AddLogger(logger, .Info);
 				AddLogger(logger, .Debug);
+				AddLogger(logger, .Info);
 				AddLogger(logger, .Warn);
 				AddLogger(logger, .Error);
 				AddLogger(logger, .Fatal);
-				return;
 			}
 
 			if (!Loggers.ContainsKey(level))
@@ -44,6 +31,19 @@ namespace Chef.Server
 			else
 			{
 				Loggers[level].Add(logger);
+			}
+		}
+
+		public void UsingDefaultLogger(LogLevel level = .Any)
+		{
+			AddLogger(ConsoleLogger, level);
+		}
+
+		public void UsingDefaultLogger(params LogLevel[] levels)
+		{
+			for (let level in levels)
+			{
+				UsingDefaultLogger(level);
 			}
 		}
 

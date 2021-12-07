@@ -1,6 +1,6 @@
 using System;
 
-namespace Chef.Core
+namespace Chef.Core.Http
 {
 	public class HttpHeader
 	{

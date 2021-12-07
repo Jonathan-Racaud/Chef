@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-namespace Chef.Core
+namespace Chef.Core.Http
 {
 	public class HttpResponse
 	{

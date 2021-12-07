@@ -46,4 +46,9 @@ namespace Chef.Logging
 			Console.ForegroundColor = _defaultForegroundColor;
 		}
 	}
+
+	static
+	{
+		public static ConsoleLogger ConsoleLogger = new ConsoleLogger();
+	}
 }
